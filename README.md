@@ -1,44 +1,42 @@
-**Step 1:** Download the latest relaese from the release tab.<br/>
 
-![Usage](Usage/Release/1.jpg)
-<br/><br/>
+DeserializationHelper can be used to quickly setup YSoSerial, YSoSerial.Net, PHPGGC, and other tools. Using this tool, you will be able to generate Deserialization Payload via web frontend. 
 
-**Step 2:** Create the website using IIS Manager.<br/>
+## Prerequisite
 
-![Usage](Usage/Release/2.png)
-<br/><br/>
+- Windows OS
 
-**Step 3:** Provide the website information.<br/>
+## Installation
 
-![Usage](Usage/Release/3.png)
-<br/><br/>
 
-**Step 4:** Please check that the following packages are installed in IIS before browsing the application.
+1. Download the latest relaese from the release tab.
+    ![Usage](Usage/Release/1.jpg)
 
-![Usage](Usage/Release/4.png)
-<br/><br/>
+2. Create the website using IIS Manager.
 
-**Step 5:** Browse the application.<br/>
+    ![Usage](Usage/Release/2.png)
 
-![Usage](Usage/Release/4.png)
-<br/><br/>
+3. Provide the website information
+    ![Usage](Usage/Release/3.png)
 
-**Step 6:** Navigates to the options and generate the payload<br/>
 
-![Usage](Usage/Release/6.png)
-<br/><br/>
+4. Please check that the following packages are installed in IIS before browsing the application.
+   ![Usage](Usage/Release/4.png)
 
-**Step 7:** If you face any permission issues as shown below<br/>
+5. Browse the application.
+    ![Usage](Usage/Release/5.png)
 
-![Usage](Usage/Release/7.png)
-<br/><br/>
+6. Navigates to the options and generate the payload
+    ![Usage](Usage/Release/6.png)
+    
+## Troubleshooting
 
-**Step 8:** It is require to fix the permission as shown below<br/>
+If you face any permission issues as shown below.
+    ![Usage](Usage/Release/7.png)
 
-![Usage](Usage/Release/8.png)
-<br/><br/>
+You can fix the permission by following the steps as shown in below screenshot.
+   ![Usage](Usage/Release/8.png)
 
-**References:**
+## References
 
 - https://github.com/frohoff/ysoserial
 - https://github.com/pwntester/ysoserial.net
