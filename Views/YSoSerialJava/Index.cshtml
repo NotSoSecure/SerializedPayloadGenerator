@@ -1,0 +1,49 @@
+﻿@using DeserializationHelper.Models
+
+@model YSoSerialJava
+
+@using (Html.BeginForm("Generate", "YSoSerialJava", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    <div class="jumbotron">
+        <h1>YSoSerial</h1>
+        <p>A POC tool to generate payload to exploit unsafe Java object deserialization.</p>
+        <a href="https://github.com/frohoff/ysoserial">More details...</a>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.gadget, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.gadget, new SelectList(Enum.GetValues(typeof(JavaGadget))),
+             new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(m => m.output, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.output, new SelectList(Enum.GetValues(typeof(JavaOutput))),
+             new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(m => m.command, new { @class = "control-label" })
+                @Html.TextAreaFor(m => m.command, new { @class = "form-control", @rows = 2 })
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Generate Payload" class="btn btn-primary form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.payload, new { @class = "control-label" })
+            @Html.TextAreaFor(m => m.payload, new { @class = "form-control", @rows = 15 })
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ysoserialCommand, new { @class = "control-label" })
+                @Html.TextAreaFor(m => m.ysoserialCommand, new { @readonly = "readonly", @class = "form-control TextBoxAsLabel"})
+            </div>
+        </div>
+    </div>
+}

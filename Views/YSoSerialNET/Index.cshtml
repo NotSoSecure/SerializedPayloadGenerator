@@ -1,0 +1,297 @@
+﻿@using DeserializationHelper.Models
+
+@model YSoSerialNET
+
+@using (Html.BeginForm("Generate", "YSoSerialNET", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    <div class="jumbotron">
+        <h1>YSoSerial.NET</h1>
+        <p class="lead">A POC tool to generate payload to exploit unsafe .NET object deserialization.</p>
+        <a href="https://github.com/pwntester/ysoserial.net">More details..</a>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-md">
+                    @Html.LabelFor(m => m.plugin, new { @class = "control-label", @id = "lblPlugin" })
+                    @Html.DropDownListFor(m => m.plugin, new SelectList(Enum.GetValues(typeof(Plugin))),
+                 new { @class = "form-control", id = "selPlugin" })
+                </div>
+                <div class="col-md">
+                    <!--<label class="control-label"></label>-->
+                    <input type="button" id="btnHelp" value="Help" class="btn btn-primary form-control" style="margin-top:5px;" />
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.gadget, new { @class = "control-label", @id = "lblGadget" })
+                @Html.DropDownListFor(m => m.gadget, new SelectList(Enum.GetValues(typeof(NetGadget))),
+             new { @class = "form-control", @id = "selGadget" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.formatter, new { @class = "control-label", @id = "lblFormatter" })
+                @Html.DropDownListFor(m => m.formatter, new SelectList(Enum.GetValues(typeof(Formatter))),
+             new { @class = "form-control", @id = "selFormatter" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.output, new { @class = "control-label", @id = "lblOutput" })
+                @Html.DropDownListFor(m => m.output, new SelectList(Enum.GetValues(typeof(NetOutput))),
+             new { @class = "form-control", @id = "selOutput" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.command, new { @class = "control-label", @id = "lblCommand" })
+                @Html.TextAreaFor(m => m.command, new { @class = "form-control", @rows = 2, @id = "txtCommand" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.minify, new { @class = "control-label", @id = "lblMinify" })
+                @Html.DropDownListFor(m => m.minify, new SelectList(Enum.GetValues(typeof(BoolType))),
+             new { @class = "form-control", @id = "selMinify" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.useSimpleType, new { @class = "control-label", @id = "lblUST" })
+                @Html.DropDownListFor(m => m.useSimpleType, new SelectList(Enum.GetValues(typeof(BoolType))),
+             new { @class = "form-control", @id = "selUST" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.generator, new { @class = "control-label", @id = "lblViewStateGenerator" })
+                @Html.TextBoxFor(m => m.generator, new { @class = "form-control", @id = "txtViewStateGenerator" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.path, new { @class = "control-label", @id = "lblViewStatePath" })
+                @Html.TextBoxFor(m => m.path, new { @class = "form-control", @id = "txtViewStatePath" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.appPath, new { @class = "control-label", @id = "lblViewStateAppPath" })
+                @Html.TextBoxFor(m => m.appPath, new { @class = "form-control", @id = "txtViewStateAppPath" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.legacy, new { @class = "control-label", @id = "lblViewStateLegacy" })
+                @Html.DropDownListFor(m => m.legacy, new SelectList(Enum.GetValues(typeof(BoolType))),
+             new { @class = "form-control", @id = "selViewStateLegacy" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ecnrypted, new { @class = "control-label", @id = "lblViewStateEncrypted" })
+                @Html.DropDownListFor(m => m.ecnrypted, new SelectList(Enum.GetValues(typeof(BoolType))),
+             new { @class = "form-control", @id = "selViewStateEncrypted" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.viewStateUserKey, new { @class = "control-label", @id = "lblViewStateUserKey" })
+                @Html.TextBoxFor(m => m.viewStateUserKey, new { @class = "form-control", @id = "txtViewStateUserKey" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.validationAlgo, new { @class = "control-label", @id = "lblViewStateValidationAlgo" })
+                @Html.DropDownListFor(m => m.validationAlgo, new SelectList(Enum.GetValues(typeof(ValidationAlgo))),
+             new { @class = "form-control", @id = "selViewStateValidationAlgo" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.validationKey, new { @class = "control-label", @id = "lblViewStateValidationKey" })
+                @Html.TextBoxFor(m => m.validationKey, new { @class = "form-control", @id = "txtViewStateValidationKey" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.decryptionAlgo, new { @class = "control-label", @id = "lblViewStateDecryptionAlgo" })
+                @Html.DropDownListFor(m => m.decryptionAlgo, new SelectList(Enum.GetValues(typeof(DecryptionAlgo))),
+             new { @class = "form-control", @id = "selViewStateDecryptionAlgo" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.decryptionKey, new { @class = "control-label", @id = "lblViewStateDecryptionKey" })
+                @Html.TextBoxFor(m => m.decryptionKey, new { @class = "form-control", @id = "txtViewStateDecryptionKey" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.mode, new { @class = "control-label", @id = "lblMode" })
+                @Html.TextBoxFor(m => m.mode, new { @class = "form-control", @id = "txtMode" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.file, new { @class = "control-label", @id = "lblFile" })
+                @Html.TextBoxFor(m => m.file, new { @class = "form-control", @id = "txtFile" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.format, new { @class = "control-label", @id = "lblFormat" })
+                @Html.TextBoxFor(m => m.format, new { @class = "form-control", @id = "txtFormat" })
+            </div>
+            <div class="form-group">
+                <input type="submit" id="btnSubmit" value="Generate Payload" class="btn btn-primary form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.payload, new { @class = "control-label", @id = "lblPayload" })
+            @Html.TextAreaFor(m => m.payload, new { @class = "form-control", @id = "txtPayload", @rows = 28 })
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ysoserialNetCommand, new { @class = "control-label", @id = "lblYSoSerialNetCommand" })
+                @Html.TextAreaFor(m => m.ysoserialNetCommand, new { @readonly = "readonly", @id = "txtYSoSerialNetCommand", @class = "form-control TextBoxAsLabel" })
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        ShowHideControl();
+
+        $('#selFormatter').empty();
+        $('#selFormatter').append(new Option("BinaryFormatter", "BinaryFormatter"));
+        $('#selFormatter').append(new Option("LosFormatter", "LosFormatter"));
+        $('#selFormatter').append(new Option("SoapFormatter", "SoapFormatter"));
+        $('#selMinify').val('False');
+    });
+
+    $('#selGadget').change(function () {
+        $('#selFormatter').empty();
+
+        var data = $(this).val();
+        if (data == "ObjectDataProvider") {
+            $('#selFormatter').append(new Option("DataContractSerializer", "DataContractSerializer"));
+            $('#selFormatter').append(new Option("FastJson", "FastJson"));
+            $('#selFormatter').append(new Option("JavaScriptSerializer", "JavaScriptSerializer"));
+            $('#selFormatter').append(new Option("SharpSerializerBinary", "SharpSerializerBinary"));
+            $('#selFormatter').append(new Option("SharpSerializerXml", "SharpSerializerXml"));
+            $('#selFormatter').append(new Option("Xaml", "Xaml"));
+            $('#selFormatter').append(new Option("XmlSerializer", "XmlSerializer"));
+            $('#selFormatter').append(new Option("YamlDotNet", "YamlDotNet"));
+        }
+        else {
+            $('#selFormatter').append(new Option("BinaryFormatter", "BinaryFormatter"));
+            $('#selFormatter').append(new Option("LosFormatter", "LosFormatter"));
+            if (data != "ResourceSet" && data != "TypeConfuseDelegate" && data != "TypeConfuseDelegateMono") {
+                $('#selFormatter').append(new Option("SoapFormatter", "SoapFormatter"));
+            }
+
+            if (data != "ActivitySurrogateSelector" && data != "ActivitySurrogateSelectorFromFile" && data != "ClaimsIdentity" &&
+                data != "DataSet" && data != "ObjectDataProvider") {
+                $('#selFormatter').append(new Option("NetDataContractSerializer", "NetDataContractSerializer"));
+            }
+            if (data == "RolePrincipal" || data == "SessionSecurityToken" || data == "SessionViewStateHistoryItem" ||
+                data == "TextFormattingRunProperties" || data == "WindowsClaimsIdentity" || data == "WindowsIdentity" || data == "WindowsPrincipal") {
+                $('#selFormatter').append(new Option("DataContractSerializer", "DataContractSerializer"));
+            }
+
+            if (data == "WindowsPrincipal") {
+                $('#selFormatter').append(new Option("DataContractJsonSerializer", "DataContractJsonSerializer"));
+            }
+        }
+    });
+
+
+    $('#selViewStateLegacy').change(function () {
+        //Show Hide in Future
+    });
+
+    function ShowHideControl() {
+        var plugin = $("#selPlugin option:selected").text();
+        if (plugin == "ViewState") {
+            $("#lblViewStateGenerator").show();
+            $("#txtViewStateGenerator").show();
+            $("#lblViewStatePath").show();
+            $("#txtViewStatePath").show();
+            $("#lblViewStateAppPath").show();
+            $("#txtViewStateAppPath").show();
+            $("#lblViewStateLegacy").show();
+            $("#selViewStateLegacy").show();
+            $("#lblViewStateEncrypted").show();
+            $("#selViewStateEncrypted").show();
+            $("#lblViewStateUserKey").show();
+            $("#txtViewStateUserKey").show();
+            $("#lblViewStateValidationAlgo").show();
+            $("#selViewStateValidationAlgo").show();
+            $("#lblViewStateValidationKey").show();
+            $("#txtViewStateValidationKey").show();
+            $("#lblViewStateDecryptionAlgo").show();
+            $("#selViewStateDecryptionAlgo").show();
+            $("#lblViewStateDecryptionKey").show();
+            $("#txtViewStateDecryptionKey").show();
+            $("#lblFormatter").hide();
+            $("#selFormatter").hide();
+            $("#lblMode").hide();
+            $("#txtMode").hide();
+            $("#lblFile").hide();
+            $("#txtFile").hide();
+            $("#lblFormat").hide();
+            $("#txtFormat").hide();
+            document.getElementById("txtPayload").rows = 62;
+        }
+        else {
+            $("#lblViewStateGenerator").hide();
+            $("#txtViewStateGenerator").hide();
+            $("#lblViewStatePath").hide();
+            $("#txtViewStatePath").hide();
+            $("#lblViewStateAppPath").hide();
+            $("#txtViewStateAppPath").hide();
+            $("#lblViewStateLegacy").hide();
+            $("#selViewStateLegacy").hide();
+            $("#lblViewStateEncrypted").hide();
+            $("#selViewStateEncrypted").hide();
+            $("#lblViewStateUserKey").hide();
+            $("#txtViewStateUserKey").hide();
+            $("#lblViewStateValidationAlgo").hide();
+            $("#selViewStateValidationAlgo").hide();
+            $("#lblViewStateValidationKey").hide();
+            $("#txtViewStateValidationKey").hide();
+            $("#lblViewStateDecryptionAlgo").hide();
+            $("#selViewStateDecryptionAlgo").hide();
+            $("#lblViewStateDecryptionKey").hide();
+            $("#txtViewStateDecryptionKey").hide();
+            $("#lblFormat").hide();
+            $("#txtFormat").hide();
+            $("#lblMode").hide();
+            $("#txtMode").hide();
+            $("#lblFile").hide();
+            $("#txtFile").hide();
+            $("#lblFormatter").show();
+            $("#selFormatter").show();
+            if (plugin == "Resx" || plugin == "DotNetNuke") {
+                debugger
+                $("#lblMode").show();
+                $("#txtMode").show();
+                $("#lblFile").show();
+                $("#txtFile").show();
+                document.getElementById("txtPayload").rows = 38;
+            }
+            else if (plugin == "Clipboard") {
+                $("#lblMode").show();
+                $("#txtMode").show();
+                document.getElementById("txtPayload").rows = 34;
+            }
+            else if (plugin == "Altserialization") {
+                $("#lblFormat").show();
+                $("#txtFormat").show();
+                document.getElementById("txtPayload").rows = 34;
+            }
+            else {
+                document.getElementById("txtPayload").rows = 30;
+                //Do necessary show hide
+            }
+        }
+    }
+
+    $('#selPlugin').change(function () {
+        ShowHideControl();
+    });
+
+    $("#btnSubmit").click(function () {
+        $("#txtPayload").text("");
+    });
+
+    $("#btnHelp").click(function () {
+        var plugin = $("#selPlugin option:selected").text();
+        var postdata = "plugin=" + plugin;
+        $.ajax({
+            type: "POST",
+            url: "/YSoSerialNET/CommandHelp",
+            data: postdata,
+            processData: false,
+            success: function (response) {
+                if (plugin == "Generic")
+                    $("#txtYSoSerialNetCommand").text("ysoserial.exe --help");
+                else
+                    $("#txtYSoSerialNetCommand").text("ysoserial.exe -p " + plugin + " --help");
+                $("#txtPayload").text(response);
+            },
+            error: function (xhr) {
+            }
+        });
+    });
+</script>

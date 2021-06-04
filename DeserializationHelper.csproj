@@ -1,0 +1,685 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2707AA7B-DF71-4C0B-BBB3-061BEA7D3384}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeserializationHelper</RootNamespace>
+    <AssemblyName>DeserializationHelper</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44337</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PHPGGCController.cs" />
+    <Compile Include="Controllers\PythonController.cs" />
+    <Compile Include="Controllers\RubyController.cs" />
+    <Compile Include="Controllers\YSoSerialJavaController.cs" />
+    <Compile Include="Controllers\YSoSerialNETController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhpGGC.cs" />
+    <Compile Include="Models\Python.cs" />
+    <Compile Include="Models\YSoSerialJava.cs" />
+    <Compile Include="Models\YSoSerialNET.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\User.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Resource\java\bin\awt.dll" />
+    <Content Include="Resource\java\bin\client\jvm.dll" />
+    <Content Include="Resource\java\bin\client\Xusage.txt" />
+    <Content Include="Resource\java\bin\dt_shmem.dll" />
+    <Content Include="Resource\java\bin\dt_socket.dll" />
+    <Content Include="Resource\java\bin\fontmanager.dll" />
+    <Content Include="Resource\java\bin\freetype.dll" />
+    <Content Include="Resource\java\bin\hprof.dll" />
+    <Content Include="Resource\java\bin\instrument.dll" />
+    <Content Include="Resource\java\bin\j2pcsc.dll" />
+    <Content Include="Resource\java\bin\j2pkcs11.dll" />
+    <Content Include="Resource\java\bin\jaas_nt.dll" />
+    <Content Include="Resource\java\bin\jabswitch.exe" />
+    <Content Include="Resource\java\bin\java-rmi.exe" />
+    <Content Include="Resource\java\bin\java.dll" />
+    <Content Include="Resource\java\bin\java.exe" />
+    <Content Include="Resource\java\bin\JavaAccessBridge-32.dll" />
+    <Content Include="Resource\java\bin\JavaAccessBridge.dll" />
+    <Content Include="Resource\java\bin\javaw.exe" />
+    <Content Include="Resource\java\bin\java_crw_demo.dll" />
+    <Content Include="Resource\java\bin\jawt.dll" />
+    <Content Include="Resource\java\bin\JAWTAccessBridge-32.dll" />
+    <Content Include="Resource\java\bin\JAWTAccessBridge.dll" />
+    <Content Include="Resource\java\bin\jdwp.dll" />
+    <Content Include="Resource\java\bin\jjs.exe" />
+    <Content Include="Resource\java\bin\jli.dll" />
+    <Content Include="Resource\java\bin\jpeg.dll" />
+    <Content Include="Resource\java\bin\jsdt.dll" />
+    <Content Include="Resource\java\bin\jsound.dll" />
+    <Content Include="Resource\java\bin\jsoundds.dll" />
+    <Content Include="Resource\java\bin\keytool.exe" />
+    <Content Include="Resource\java\bin\kinit.exe" />
+    <Content Include="Resource\java\bin\klist.exe" />
+    <Content Include="Resource\java\bin\ktab.exe" />
+    <Content Include="Resource\java\bin\lcms.dll" />
+    <Content Include="Resource\java\bin\management.dll" />
+    <Content Include="Resource\java\bin\mlib_image.dll" />
+    <Content Include="Resource\java\bin\msvcp120.dll" />
+    <Content Include="Resource\java\bin\msvcr120.dll" />
+    <Content Include="Resource\java\bin\net.dll" />
+    <Content Include="Resource\java\bin\nio.dll" />
+    <Content Include="Resource\java\bin\npt.dll" />
+    <Content Include="Resource\java\bin\orbd.exe" />
+    <Content Include="Resource\java\bin\pack200.exe" />
+    <Content Include="Resource\java\bin\policytool.exe" />
+    <Content Include="Resource\java\bin\rmid.exe" />
+    <Content Include="Resource\java\bin\rmiregistry.exe" />
+    <Content Include="Resource\java\bin\servertool.exe" />
+    <Content Include="Resource\java\bin\splashscreen.dll" />
+    <Content Include="Resource\java\bin\sunec.dll" />
+    <Content Include="Resource\java\bin\sunmscapi.dll" />
+    <Content Include="Resource\java\bin\tnameserv.exe" />
+    <Content Include="Resource\java\bin\unpack.dll" />
+    <Content Include="Resource\java\bin\unpack200.exe" />
+    <Content Include="Resource\java\bin\verify.dll" />
+    <Content Include="Resource\java\bin\w2k_lsa_auth.dll" />
+    <Content Include="Resource\java\bin\WindowsAccessBridge-32.dll" />
+    <Content Include="Resource\java\bin\WindowsAccessBridge.dll" />
+    <Content Include="Resource\java\bin\zip.dll" />
+    <Content Include="Resource\java\lib\charsets.jar" />
+    <Content Include="Resource\java\lib\ext\access-bridge-32.jar" />
+    <Content Include="Resource\java\lib\ext\access-bridge.jar" />
+    <Content Include="Resource\java\lib\ext\cldrdata.jar" />
+    <Content Include="Resource\java\lib\ext\dnsns.jar" />
+    <Content Include="Resource\java\lib\ext\jaccess.jar" />
+    <Content Include="Resource\java\lib\ext\localedata.jar" />
+    <Content Include="Resource\java\lib\ext\nashorn.jar" />
+    <Content Include="Resource\java\lib\ext\sunec.jar" />
+    <Content Include="Resource\java\lib\ext\sunjce_provider.jar" />
+    <Content Include="Resource\java\lib\ext\sunmscapi.jar" />
+    <Content Include="Resource\java\lib\ext\sunpkcs11.jar" />
+    <Content Include="Resource\java\lib\ext\zipfs.jar" />
+    <Content Include="Resource\java\lib\images\cursors\invalid32x32.gif" />
+    <Content Include="Resource\java\lib\images\cursors\win32_CopyDrop32x32.gif" />
+    <Content Include="Resource\java\lib\images\cursors\win32_CopyNoDrop32x32.gif" />
+    <Content Include="Resource\java\lib\images\cursors\win32_LinkDrop32x32.gif" />
+    <Content Include="Resource\java\lib\images\cursors\win32_LinkNoDrop32x32.gif" />
+    <Content Include="Resource\java\lib\images\cursors\win32_MoveDrop32x32.gif" />
+    <Content Include="Resource\java\lib\images\cursors\win32_MoveNoDrop32x32.gif" />
+    <Content Include="Resource\java\lib\jce.jar" />
+    <Content Include="Resource\java\lib\jfr.jar" />
+    <Content Include="Resource\java\lib\jsse.jar" />
+    <Content Include="Resource\java\lib\jvm.hprof.txt" />
+    <Content Include="Resource\java\lib\management-agent.jar" />
+    <Content Include="Resource\java\lib\resources.jar" />
+    <Content Include="Resource\java\lib\rt.jar" />
+    <Content Include="Resource\java\lib\security\policy\limited\local_policy.jar" />
+    <Content Include="Resource\java\lib\security\policy\limited\US_export_policy.jar" />
+    <Content Include="Resource\java\lib\security\policy\unlimited\local_policy.jar" />
+    <Content Include="Resource\java\lib\security\policy\unlimited\US_export_policy.jar" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\CodeIgniter4\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\CodeIgniter4\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\CodeIgniter4\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\CodeIgniter4\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Doctrine\FW\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Doctrine\FW\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Drupal7\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Drupal7\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Drupal7\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Drupal7\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Guzzle\FW\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Guzzle\FW\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Guzzle\INFO\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Guzzle\INFO\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Guzzle\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Guzzle\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Horde\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Horde\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laminas\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laminas\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\3\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\3\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\4\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\5\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\5\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\6\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\6\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\7\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\7\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Magento\FW\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Magento\FW\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Magento\SQLI\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Magento\SQLI\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\3\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\3\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\4\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Phalcon\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Phalcon\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPCSFixer\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPCSFixer\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPCSFixer\FD\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPCSFixer\FD\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\3\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\3\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\4\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPExcel\FD\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Pydio\Guzzle\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Pydio\Guzzle\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Slim\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Slim\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Smarty\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Smarty\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Smarty\SSRF\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Smarty\SSRF\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\3\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\3\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\4\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\SwiftMailer\FW\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\FW\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\FW\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\FW\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\FW\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\3\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\3\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\4\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\TCPDF\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\TCPDF\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ThinkPHP\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ThinkPHP\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Dompdf\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Dompdf\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Dompdf\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Dompdf\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\generic\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Guzzle\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Guzzle\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Guzzle\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\Guzzle\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\3\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\3\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\4\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\5\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\5\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\6\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\PHPExcel\RCE\6\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\EmailSubscribers\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\EmailSubscribers\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\EverestForms\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\EverestForms\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\WooCommerce\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\WooCommerce\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\WooCommerce\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\WooCommerce\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\YetAnotherStarsRating\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\WordPress\P\YetAnotherStarsRating\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Yii2\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Yii2\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Yii2\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Yii2\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Yii\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Yii\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\FD\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\2\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\2\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\3\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\3\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\4\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ZendFramework\RCE\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Enhancement\ASCIIStrings.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Enhancement\Enhancement.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Enhancement\Enhancements.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Enhancement\FastDestruct.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Enhancement\PlusNumbers.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Enhancement\Wrapper.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Exception.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\FileDelete.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\FileRead.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\FileWrite.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\PHPInfo.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\RCE.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\RCE\Command.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\RCE\FunctionCall.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\RCE\PHPCode.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\SqlInjection.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\GadgetChain\SSRF.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\InvalidArgumentsException.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Phar\Format.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Phar\Phar.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Phar\Tar.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\PHPGGC\Phar\Zip.php" />
+    <Content Include="Resource\phpggc\phpggc-master\lib\test_payload.php" />
+    <Content Include="Resource\phpggc\phpggc-master\templates\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\templates\gadgets.php" />
+    <Content Include="Resource\php\deplister.exe" />
+    <Content Include="Resource\php\ext\php_bz2.dll" />
+    <Content Include="Resource\php\ext\php_com_dotnet.dll" />
+    <Content Include="Resource\php\ext\php_curl.dll" />
+    <Content Include="Resource\php\ext\php_dba.dll" />
+    <Content Include="Resource\php\ext\php_enchant.dll" />
+    <Content Include="Resource\php\ext\php_exif.dll" />
+    <Content Include="Resource\php\ext\php_ffi.dll" />
+    <Content Include="Resource\php\ext\php_fileinfo.dll" />
+    <Content Include="Resource\php\ext\php_ftp.dll" />
+    <Content Include="Resource\php\ext\php_gd.dll" />
+    <Content Include="Resource\php\ext\php_gettext.dll" />
+    <Content Include="Resource\php\ext\php_gmp.dll" />
+    <Content Include="Resource\php\ext\php_imap.dll" />
+    <Content Include="Resource\php\ext\php_intl.dll" />
+    <Content Include="Resource\php\ext\php_ldap.dll" />
+    <Content Include="Resource\php\ext\php_mbstring.dll" />
+    <Content Include="Resource\php\ext\php_mysqli.dll" />
+    <Content Include="Resource\php\ext\php_oci8_12c.dll" />
+    <Content Include="Resource\php\ext\php_oci8_19.dll" />
+    <Content Include="Resource\php\ext\php_odbc.dll" />
+    <Content Include="Resource\php\ext\php_opcache.dll" />
+    <Content Include="Resource\php\ext\php_openssl.dll" />
+    <Content Include="Resource\php\ext\php_pdo_firebird.dll" />
+    <Content Include="Resource\php\ext\php_pdo_mysql.dll" />
+    <Content Include="Resource\php\ext\php_pdo_oci.dll" />
+    <Content Include="Resource\php\ext\php_pdo_odbc.dll" />
+    <Content Include="Resource\php\ext\php_pdo_pgsql.dll" />
+    <Content Include="Resource\php\ext\php_pdo_sqlite.dll" />
+    <Content Include="Resource\php\ext\php_pgsql.dll" />
+    <Content Include="Resource\php\ext\php_phpdbg_webhelper.dll" />
+    <Content Include="Resource\php\ext\php_shmop.dll" />
+    <Content Include="Resource\php\ext\php_snmp.dll" />
+    <Content Include="Resource\php\ext\php_soap.dll" />
+    <Content Include="Resource\php\ext\php_sockets.dll" />
+    <Content Include="Resource\php\ext\php_sodium.dll" />
+    <Content Include="Resource\php\ext\php_sqlite3.dll" />
+    <Content Include="Resource\php\ext\php_sysvshm.dll" />
+    <Content Include="Resource\php\ext\php_tidy.dll" />
+    <Content Include="Resource\php\ext\php_xsl.dll" />
+    <Content Include="Resource\php\ext\php_zend_test.dll" />
+    <Content Include="Resource\php\glib-2.dll" />
+    <Content Include="Resource\php\gmodule-2.dll" />
+    <Content Include="Resource\php\icudt68.dll" />
+    <Content Include="Resource\php\icuin68.dll" />
+    <Content Include="Resource\php\icuio68.dll" />
+    <Content Include="Resource\php\icuuc68.dll" />
+    <Content Include="Resource\php\libcrypto-1_1-x64.dll" />
+    <Content Include="Resource\php\libenchant2.dll" />
+    <Content Include="Resource\php\libpq.dll" />
+    <Content Include="Resource\php\libsasl.dll" />
+    <Content Include="Resource\php\libsodium.dll" />
+    <Content Include="Resource\php\libsqlite3.dll" />
+    <Content Include="Resource\php\libssh2.dll" />
+    <Content Include="Resource\php\libssl-1_1-x64.dll" />
+    <Content Include="Resource\php\lib\enchant\libenchant2_hunspell.dll" />
+    <Content Include="Resource\php\license.txt" />
+    <Content Include="Resource\php\news.txt" />
+    <Content Include="Resource\php\nghttp2.dll" />
+    <Content Include="Resource\php\php-cgi.exe" />
+    <Content Include="Resource\php\php-win.exe" />
+    <Content Include="Resource\php\php.exe" />
+    <Content Include="Resource\php\php8apache2_4.dll" />
+    <Content Include="Resource\php\php8phpdbg.dll" />
+    <Content Include="Resource\php\php8ts.dll" />
+    <Content Include="Resource\php\phpdbg.exe" />
+    <Content Include="Resource\php\readme-redist-bins.txt" />
+    <Content Include="Resource\php\snapshot.txt" />
+    <Content Include="Resource\python\libcrypto-1_1.dll" />
+    <Content Include="Resource\python\libffi-7.dll" />
+    <Content Include="Resource\python\libssl-1_1.dll" />
+    <Content Include="Resource\python\LICENSE.txt" />
+    <Content Include="Resource\python\python.exe" />
+    <Content Include="Resource\python\python3.dll" />
+    <Content Include="Resource\python\python39.dll" />
+    <Content Include="Resource\python\pythonw.exe" />
+    <Content Include="Resource\python\sqlite3.dll" />
+    <Content Include="Resource\python\vcruntime140.dll" />
+    <Content Include="Resource\python\vcruntime140_1.dll" />
+    <Content Include="Resource\python_support\pickle_deser.py" />
+    <Content Include="Resource\python_support\pickle_deser_dict.py" />
+    <Content Include="Resource\TempFiles\TempFiles.txt" />
+    <Content Include="Resource\ysoserial.jar" />
+    <Content Include="Resource\ysoserialnet\dlls\Microsoft.PowerShell.Editor.dll" />
+    <Content Include="Resource\ysoserialnet\dlls\System.Management.Automation.dll" />
+    <Content Include="Resource\ysoserialnet\E.dll" />
+    <Content Include="Resource\ysoserialnet\fastjson.dll" />
+    <Content Include="Resource\ysoserialnet\FSharp.Core.dll" />
+    <Content Include="Resource\ysoserialnet\FSharp.Core.xml" />
+    <Content Include="Resource\ysoserialnet\FsPickler.CSharp.dll" />
+    <Content Include="Resource\ysoserialnet\FsPickler.CSharp.pdb" />
+    <Content Include="Resource\ysoserialnet\FsPickler.CSharp.xml" />
+    <Content Include="Resource\ysoserialnet\FsPickler.dll" />
+    <Content Include="Resource\ysoserialnet\FsPickler.Json.dll" />
+    <Content Include="Resource\ysoserialnet\FsPickler.Json.pdb" />
+    <Content Include="Resource\ysoserialnet\FsPickler.Json.xml" />
+    <Content Include="Resource\ysoserialnet\FsPickler.pdb" />
+    <Content Include="Resource\ysoserialnet\FsPickler.xml" />
+    <Content Include="Resource\ysoserialnet\microsoft.identitymodel.dll" />
+    <Content Include="Resource\ysoserialnet\Microsoft.PowerShell.Editor.dll" />
+    <Content Include="Resource\ysoserialnet\NDesk.Options.dll" />
+    <Content Include="Resource\ysoserialnet\Newtonsoft.Json.dll" />
+    <Content Include="Resource\ysoserialnet\Newtonsoft.Json.xml" />
+    <Content Include="Resource\ysoserialnet\Polenter.SharpSerializer.dll" />
+    <Content Include="Resource\ysoserialnet\Polenter.SharpSerializer.xml" />
+    <Content Include="Resource\ysoserialnet\TestConsoleApp_YSONET.exe" />
+    <Content Include="Resource\ysoserialnet\TestConsoleApp_YSONET.pdb" />
+    <Content Include="Resource\ysoserialnet\YamlDotNet.dll" />
+    <Content Include="Resource\ysoserialnet\YamlDotNet.xml" />
+    <Content Include="Resource\ysoserialnet\ysoserial.exe" />
+    <Content Include="Resource\ysoserialnet\ysoserial.pdb" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Resource\php\dev\php8ts.lib" />
+    <Content Include="Resource\php\extras\ssl\openssl.cnf" />
+    <Content Include="Resource\php\phar.phar.bat" />
+    <Content Include="Resource\php\pharcommand.phar" />
+    <Content Include="Resource\php\php.ini-development" />
+    <Content Include="Resource\php\php.ini-production" />
+    <Content Include="Resource\php\php8embed.lib" />
+    <Content Include="Resource\php\README.md" />
+    <Content Include="Resource\phpggc\phpggc-master\Dockerfile" />
+    <Content Include="Resource\phpggc\phpggc-master\LICENSE" />
+    <Content Include="Resource\phpggc\phpggc-master\phpggc" />
+    <Content Include="Resource\phpggc\phpggc-master\README.md" />
+    <Content Include="Resource\ysoserialnet\TestConsoleApp_YSONET.exe.config" />
+    <Content Include="Resource\ysoserialnet\ysoserial.exe.config" />
+    <Content Include="Resource\java\ASSEMBLY_EXCEPTION" />
+    <Content Include="Resource\java\lib\accessibility.properties" />
+    <Content Include="Resource\java\lib\calendars.properties" />
+    <Content Include="Resource\java\lib\classlist" />
+    <Content Include="Resource\java\lib\cmm\CIEXYZ.pf" />
+    <Content Include="Resource\java\lib\cmm\GRAY.pf" />
+    <Content Include="Resource\java\lib\cmm\LINEAR_RGB.pf" />
+    <Content Include="Resource\java\lib\cmm\PYCC.pf" />
+    <Content Include="Resource\java\lib\cmm\sRGB.pf" />
+    <Content Include="Resource\java\lib\content-types.properties" />
+    <Content Include="Resource\java\lib\currency.data" />
+    <Content Include="Resource\java\lib\ext\meta-index" />
+    <Content Include="Resource\java\lib\flavormap.properties" />
+    <Content Include="Resource\java\lib\fontconfig.bfc" />
+    <Content Include="Resource\java\lib\fontconfig.properties.src" />
+    <Content Include="Resource\java\lib\hijrah-config-umalqura.properties" />
+    <Content Include="Resource\java\lib\i386\jvm.cfg" />
+    <Content Include="Resource\java\lib\images\cursors\cursors.properties" />
+    <Content Include="Resource\java\lib\jfr\default.jfc" />
+    <Content Include="Resource\java\lib\jfr\profile.jfc" />
+    <Content Include="Resource\java\lib\logging.properties" />
+    <Content Include="Resource\java\lib\management\jmxremote.access" />
+    <Content Include="Resource\java\lib\management\jmxremote.password.template" />
+    <Content Include="Resource\java\lib\management\management.properties" />
+    <Content Include="Resource\java\lib\management\snmp.acl.template" />
+    <Content Include="Resource\java\lib\meta-index" />
+    <Content Include="Resource\java\lib\net.properties" />
+    <Content Include="Resource\java\lib\psfont.properties.ja" />
+    <Content Include="Resource\java\lib\psfontj2d.properties" />
+    <Content Include="Resource\java\lib\security\blacklisted.certs" />
+    <Content Include="Resource\java\lib\security\cacerts" />
+    <Content Include="Resource\java\lib\security\java.policy" />
+    <Content Include="Resource\java\lib\security\java.security" />
+    <Content Include="Resource\java\lib\sound.properties" />
+    <Content Include="Resource\java\lib\tzdb.dat" />
+    <Content Include="Resource\java\lib\tzmappings" />
+    <Content Include="Resource\java\LICENSE" />
+    <Content Include="Resource\java\release" />
+    <Content Include="Resource\java\THIRD_PARTY_README" />
+    <Content Include="Resource\python_support\exploit.yaml" />
+    <Content Include="Resource\python\pyexpat.pyd" />
+    <Content Include="Resource\python\python.cat" />
+    <Content Include="Resource\python\python39.zip" />
+    <Content Include="Resource\python\python39._pth" />
+    <Content Include="Resource\python\select.pyd" />
+    <Content Include="Resource\python\unicodedata.pyd" />
+    <Content Include="Resource\python\winsound.pyd" />
+    <Content Include="Resource\python\_asyncio.pyd" />
+    <Content Include="Resource\python\_bz2.pyd" />
+    <Content Include="Resource\python\_ctypes.pyd" />
+    <Content Include="Resource\python\_decimal.pyd" />
+    <Content Include="Resource\python\_elementtree.pyd" />
+    <Content Include="Resource\python\_hashlib.pyd" />
+    <Content Include="Resource\python\_lzma.pyd" />
+    <Content Include="Resource\python\_msi.pyd" />
+    <Content Include="Resource\python\_multiprocessing.pyd" />
+    <Content Include="Resource\python\_overlapped.pyd" />
+    <Content Include="Resource\python\_queue.pyd" />
+    <Content Include="Resource\python\_socket.pyd" />
+    <Content Include="Resource\python\_sqlite3.pyd" />
+    <Content Include="Resource\python\_ssl.pyd" />
+    <Content Include="Resource\python\_uuid.pyd" />
+    <Content Include="Resource\python\_zoneinfo.pyd" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\YSoSerialJava\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\YSoSerialNET\Index.cshtml" />
+    <Content Include="Views\PHPGGC\Index.cshtml" />
+    <Content Include="Views\Python\Index.cshtml" />
+    <Content Include="Views\Ruby\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Resource\java\lib\applet\" />
+    <Folder Include="Resource\ysoserialnet\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50281</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44337/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

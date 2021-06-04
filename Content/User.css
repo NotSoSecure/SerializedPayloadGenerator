@@ -1,0 +1,11 @@
+﻿.col-md-8-user-defined {
+    width: 66.66666667%;
+    position: relative;
+    float:left;
+}
+
+.col-md-4-user-defined {
+    width: 33.33333333%;
+    position: relative;
+    float: left;
+}

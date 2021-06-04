@@ -1,0 +1,344 @@
+﻿@using DeserializationHelper.Models
+
+@model PhpGGC
+
+@using (Html.BeginForm("Generate", "PHPGGC", FormMethod.Post, new { @class = "", role = "form" }))
+{
+    <div class="jumbotron">
+        <h1>PHP Deserialization</h1>
+        <p>A POC tool to generate payload for PHP deserialization</p>
+        <a href="https://github.com/ambionics/phpggc">More details..</a>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <h4>Gadget Details</h4>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.gadget, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.gadget, new SelectList(Enum.GetValues(typeof(Gadget))),
+                     new { @class = "form-control", @id = "selGadget" })
+                    </div>
+                    <div class="form-group">
+                        <label id="lblVersion">Affected Version:</label>
+                        <select class="form-control" id="selVersion" disabled="disabled">
+                            <option>4.0.0-beta.1 <= 4.0.0-rc.4</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="lblType">Type:</label>
+                        <select class="form-control" id="selType" disabled="disabled">
+                            <option>rce</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label id="lblVector">Vector:</label>
+                        <select class="form-control" id="selVector" disabled="disabled">
+                            <option>__destruct</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.encoding, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.encoding, new SelectList(Enum.GetValues(typeof(Encoding))),
+             new { @class = "form-control", @id = "selEncoding" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.enhancement, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.enhancement, new SelectList(Enum.GetValues(typeof(Enhancement))),
+             new { @class = "form-control", @id = "selEnhancement" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.phar, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.phar, new SelectList(Enum.GetValues(typeof(PHAR))),
+             new { @class = "form-control", @id = "selPHAR" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.functionName, new { @class = "control-label", @id = "lblFunctionName" })
+                @Html.TextBoxFor(m => m.functionName, new { @class = "form-control", @id = "txtFunctionName" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.functionParameter, new { @class = "control-label", @id = "lblFunctionParameter" })
+                @Html.TextBoxFor(m => m.functionParameter, new { @class = "form-control", @id = "txtFunctionParameter" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.outputType, new { @class = "control-label" })
+                @Html.DropDownListFor(m => m.outputType, new SelectList(Enum.GetValues(typeof(OutputType))),
+             new { @class = "form-control", @id = "selOutputType" })
+            </div>
+            <div class="form-group">
+                <input type="submit" id="btnSubmit" value="Generate Payload" class="btn btn-primary form-control" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            @Html.LabelFor(m => m.payload, new { @class = "control-label", @id = "lblPayload" })
+            @Html.TextAreaFor(m => m.payload, new { @class = "form-control", @id = "txtPayload", @rows = 42 })
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(m => m.phpggcCommand, new { @class = "control-label", @id = "lblPhpggcCommand" })
+                @Html.TextAreaFor(m => m.phpggcCommand, new { @readonly = "readonly", @id = "txtPhpggcCommand", @class = "form-control TextBoxAsLabel" })
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    $("#selGadget").change(function () {
+        var data = $(this).val();
+        $("#selVersion").empty();
+        $("#selType").empty();
+        $("#selVector").empty();
+        if (data == "CodeIgniter4_RCE1") {
+            $("#selVersion").append(new Option("4.0.0-beta.1 <= 4.0.0-rc.4", "4.0.0-beta.1 <= 4.0.0-rc.4"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "CodeIgniter4_RCE2") {
+            $("#selVersion").append(new Option("4.0.0-rc.4 <= 4.0.3+", "4.0.0-rc.4 <= 4.0.3+"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Doctrine_FW1") {
+            $("#selVersion").append(new Option("?", "?"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "Drupal7_FD1") {
+            $("#selVersion").append(new Option("7.0 < ?", "7.0 < ?"));
+            $("#selType").append(new Option("file_delete", "file_delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Drupal7_RCE1") {
+            $("#selVersion").append(new Option("7.0.8 < ?", "7.0.8 < ?"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Guzzle_FW1") {
+            $("#selVersion").append(new Option("6.0.0 <= 6.3.3+", "6.0.0 <= 6.3.3+"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Guzzle_INFO1") {
+            $("#selVersion").append(new Option("6.0.0 <= 6.3.2", "6.0.0 <= 6.3.2"));
+            $("#selType").append(new Option("phpinfo()", "phpinfo()"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Guzzle_RCE1") {
+            $("#selVersion").append(new Option("6.0.0 <= 6.3.2", "6.0.0 <= 6.3.2"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laminas_FD1") {
+            $("#selVersion").append(new Option("<= 2.11.2", "<= 2.11.2"));
+            $("#selType").append(new Option("file_delete", "file_delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE1") {
+            $("#selVersion").append(new Option("5.4.27", "5.4.27"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE2") {
+            $("#selVersion").append(new Option("5.5.39", "5.5.39"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE3") {
+            $("#selVersion").append(new Option("5.5.39", "5.5.39"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE4") {
+            $("#selVersion").append(new Option("5.5.39", "5.5.39"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE5") {
+            $("#selVersion").append(new Option("5.8.30", "5.8.30"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE6") {
+            $("#selVersion").append(new Option("5.5.*", "5.5.*"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Magento_FW1") {
+            $("#selVersion").append(new Option("? <= 1.9.4.0", "? <= 1.9.4.0"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Magento_SQLI1") {
+            $("#selVersion").append(new Option("? <= 1.9.4.0", "? <= 1.9.4.0"));
+            $("#selType").append(new Option("sql_injection", "sql_injection"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Monolog_RCE1") {
+            $("#selVersion").append(new Option("1.18 <= 2.0.2", "1.18 <= 2.0.2"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Monolog_RCE2") {
+            $("#selVersion").append(new Option("1.5 <= 1.17", "1.5 <= 1.17"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Monolog_RCE3") {
+            $("#selVersion").append(new Option("1.1.0 <= 1.10.0", "1.1.0 <= 1.10.0"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Phalcon_RCE1") {
+            $("#selVersion").append(new Option("<= 1.2.2", "<= 1.2.2"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Pydio_Guzzle_RCE1") {
+            $("#selVersion").append(new Option("< 8.2.2", "< 8.2.2"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "Slim_RCE1") {
+            $("#selVersion").append(new Option("3.8.1", "3.8.1"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "SwiftMailer_FD1") {
+            $("#selVersion").append(new Option("-5.4.12+, -6.2.1+", "-5.4.12+, -6.2.1+"));
+            $("#selType").append(new Option("file_delete", "file_delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "SwiftMailer_FW1") {
+            $("#selVersion").append(new Option("5.1.0 <= 5.4.8", "5.1.0 <= 5.4.8"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "SwiftMailer_FW2") {
+            $("#selVersion").append(new Option("6.0.0 <= 6.0.1", "6.0.0 <= 6.0.1"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "SwiftMailer_FW3") {
+            $("#selVersion").append(new Option("5.1.0", "5.1.0"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "SwiftMailer_FW4") {
+            $("#selVersion").append(new Option("4.0.0 <= ?", "4.0.0 <= ?"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_FW1") {
+            $("#selVersion").append(new Option("2.5.2", "2.5.2"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("DebugImport", "DebugImport"));
+        }
+        else if (data == "Symfony_FW2") {
+            $("#selVersion").append(new Option("3.4", "3.4"));
+            $("#selType").append(new Option("file_write", "file_write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE1") {
+            $("#selVersion").append(new Option("3.3", "3.3"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE2") {
+            $("#selVersion").append(new Option("2.3.42 < 2.6", "2.3.42 < 2.6"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE3") {
+            $("#selVersion").append(new Option("2.6 <= 2.8.32", "2.6 <= 2.8.32"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE4") {
+            $("#selVersion").append(new Option("3.4.0-34, 4.2.0-11, 4.3.0-7", "3.4.0-34, 4.2.0-11, 4.3.0-7"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "ThinkPHP_RCE1") {
+            $("#selVersion").append(new Option("5.1.x-5.2.x", "5.1.x-5.2.x"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_Dompdf_RCE1") {
+            $("#selVersion").append(new Option("<= 0.8.5+", "<= 0.8.5+"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_Dompdf_RCE2") {
+            $("#selVersion").append(new Option("0.7.0 <= 0.8.4", "0.7.0 <= 0.8.4"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_Guzzle_RCE1") {
+            $("#selVersion").append(new Option("4.0.0 <= 6.4.1+", "4.0.0 <= 6.4.1+"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "WordPress_Guzzle_RCE2") {
+            $("#selVersion").append(new Option("4.0.0 <= 6.4.1+", "4.0.0 <= 6.4.1+"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_P_EmailSubscribers_RCE1") {
+            $("#selVersion").append(new Option("4.0 <= 4.4.7+", "4.0 <= 4.4.7+"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_P_EverestForms_RCE1") {
+            $("#selVersion").append(new Option("1.0 <= 1.6.7+", "1.0 <= 1.6.7+"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_P_WooCommerce_RCE1") {
+            $("#selVersion").append(new Option("3.4.0 <= 4.1.0+", "3.4.0 <= 4.1.0+"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_P_YetAnotherStarsRating_RCE1") {
+            $("#selVersion").append(new Option("? <= 1.8.6", "? <= 1.8.6"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Yii_RCE1") {
+            $("#selVersion").append(new Option("1.1.20", "1.1.20"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "ZendFramework_FD1") {
+            $("#selVersion").append(new Option("? <= 1.12.20", "? <= 1.12.20"));
+            $("#selType").append(new Option("file_delete", "file_delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "ZendFramework_RCE1") {
+            $("#selVersion").append(new Option("? <= 1.12.20", "? <= 1.12.20"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "ZendFramework_RCE2") {
+            $("#selVersion").append(new Option("1.11.12 <= 1.12.20", "1.11.12 <= 1.12.20"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "ZendFramework_RCE3") {
+            $("#selVersion").append(new Option("2.0.1 <= ?", "2.0.1 <= ?"));
+            $("#selType").append(new Option("rce", "rce"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+    });
+</script>
