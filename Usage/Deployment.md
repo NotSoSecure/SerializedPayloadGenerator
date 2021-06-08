@@ -1,4 +1,4 @@
-**Step 1:** Download the latest relaese from the release tab.<br/>
+**Step 1:** Download the latest relaese from the [release page](https://github.com/NotSoSecure/DeserializationHelper/releases).<br/>
 
 ![Usage](Deployment/1.jpg)
 <br/><br/>
@@ -13,12 +13,11 @@
 ![Usage](Deployment/3.png)
 <br/><br/>
 
-**Step 4:** Please check that the following packages are installed in IIS before browsing the application.
+**Step 4:** Browse the application.<br/>
 
 ![Usage](Deployment/4.png)
-<br/><br/>
 
-**Step 5:** Browse the application.<br/>
+**Step 5:** Navigates to the options and generate the payload<br/>
 
 ![Usage](Deployment/5.png)
 
