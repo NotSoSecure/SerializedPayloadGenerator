@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/v4-shims.css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,6 +20,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Deserialization Helper", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -27,6 +30,9 @@
                     <li>@Html.ActionLink("Python", "Index", "Python")</li>
                     <!--<li>@Html.ActionLink("Ruby", "Index", "Ruby")</li>-->
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -34,7 +40,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Deserialization Helper - <a href="https://sanjaygondaliya.com">sanjaygondaliya.com</a></p>
+            <p>Deserialization Helper - &copy; NotSoSecure @DateTime.Now.Year Global Services Ltd, all rights reserved</p>
         </footer>
     </div>
 

@@ -145,6 +145,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resource\Icon.png" />
     <Content Include="Resource\java\bin\awt.dll" />
     <Content Include="Resource\java\bin\client\jvm.dll" />
     <Content Include="Resource\java\bin\client\Xusage.txt" />
