@@ -23,13 +23,4 @@
 ![Usage](Build/5.png)
 <br/><br/>
 
-**Step 6:** Fix the permission issue.<br/>
-
-![Usage](Build/6.png)
-<br/><br/>
-
-**Step 7:** Open the website.<br/>
-
-![Usage](Build/7.png)
-
 
