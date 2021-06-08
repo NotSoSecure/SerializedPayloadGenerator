@@ -1,6 +1,6 @@
 **Step 1:** Install the pre-requisite using "setup.bat" file. <br/>
 
-![Usage](Deployment/1.png)
+![Usage](Deployment/1.jpg)
 <br/><br/>
 
 **Step 2:** Open the project in visual studio and install the "Nuget Packages".<br/>
@@ -18,18 +18,8 @@
 ![Usage](Deployment/4.png)
 <br/><br/>
 
-**Step 5:** Open the website and observe permission error.<br/>
+**Step 5:** Open the website.<br/>
 
 ![Usage](Deployment/5.png)
-<br/><br/>
-
-**Step 6:** Fix the permission issue.<br/>
-
-![Usage](Deployment/6.png)
-<br/><br/>
-
-**Step 7:** Open the website.<br/>
-
-![Usage](Deployment/7.png)
 
 
