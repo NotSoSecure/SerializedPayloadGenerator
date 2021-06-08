@@ -1,5 +1,14 @@
 
-DeserializationHelper can be used to quickly setup YSoSerial, YSoSerial.Net, PHPGGC, and other tools. Using this tool, you will be able to generate Deserialization Payload via web frontend. 
+
+It's Web Interface to generate payload using various deserialization exploitation framework
+
+## Description
+
+During the pentesting engagement of the application which are built in different programing langauge. In order to exploit the deserialization vulnerability it is require to setup different tools like YSoSerial(Java), YSoSerial.NET, PHPGGC and it's pre-requisite. DeserializationHelper is the web interface which contains the support for YSoSerial(Java), YSoSerial.Net, PHPGGC, and other tools. Using the web interface you can generate the deserialization payload for various framework. 
+
+## Desclaimer
+
+This tool is not intended to be used to attack systems except where explicitly authorized. We are not responsible or liable for misuse of the software. Please use it responsibly.
 
 ## Prerequisite
 
@@ -7,37 +16,25 @@ DeserializationHelper can be used to quickly setup YSoSerial, YSoSerial.Net, PHP
 
 ## Installation
 
+- To build the source code
+    - Follow the [build guide](Usage/Build.md)     
+- To install the latest released version
+    - Follow the [deployment guide](Usage/Deployment.md)
+- Web.config Permission Issue
+    - Follow the [Permission issue guide](Usage/IIS_Permission.md)  
+- Directory Issue
+    - Follow the [Directory Listing issue guide](Usage/DirectoryListing.md)   
 
-1. Download the latest relaese from the release tab.
-    ![Usage](Usage/Release/1.jpg)
+## Usage
 
-2. Create the website using IIS Manager.
+Navigate to the link for which you want to generate the payload. For example, In order to generate YSoSerial Deserialization payload then use "YSoSerial" tab as shown below:
 
-    ![Usage](Usage/Release/2.png)
-
-3. Provide the website information
-    ![Usage](Usage/Release/3.png)
-
-
-4. Please check that the following packages are installed in IIS before browsing the application.
-   ![Usage](Usage/Release/4.png)
-
-5. Browse the application.
-    ![Usage](Usage/Release/5.png)
-
-6. Navigates to the options and generate the payload
-    ![Usage](Usage/Release/6.png)
-    
-## Troubleshooting
-
-If you face any permission issues as shown below.
-    ![Usage](Usage/Release/7.png)
-
-You can fix the permission by following the steps as shown in below screenshot.
-   ![Usage](Usage/Release/8.png)
+![Usage](Usage/Usage.png)
 
 ## References
 
+- https://notsosecure.com/remote-code-execution-via-php-unserialize/
+- https://notsosecure.com/exploiting-viewstate-deserialization-using-blacklist3r-and-ysoserial-net/
 - https://github.com/frohoff/ysoserial
 - https://github.com/pwntester/ysoserial.net
 - https://github.com/ambionics/phpggc

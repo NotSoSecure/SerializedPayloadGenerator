@@ -17,8 +17,4 @@
 
 ![Usage](Deployment/4.png)
 
-**Step 5:** Navigates to the options and generate the payload<br/>
-
-![Usage](Deployment/5.png)
-
 
