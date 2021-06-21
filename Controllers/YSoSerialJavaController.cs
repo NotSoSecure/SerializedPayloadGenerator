@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DeserializationHelper.Models;
+using SerializedPayloadGenerator.Models;
 
-namespace DeserializationHelper.Controllers
+namespace SerializedPayloadGenerator.Controllers
 {
     public class YSoSerialJavaController : Controller
     {

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,17 +8,17 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2707AA7B-DF71-4C0B-BBB3-061BEA7D3384}</ProjectGuid>
+    <ProjectGuid>{AE2D4C5E-4820-47F4-A9AC-C97202396684}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeserializationHelper</RootNamespace>
-    <AssemblyName>DeserializationHelper</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <RootNamespace>SerializedPayloadGenerator</RootNamespace>
+    <AssemblyName>SerializedPayloadGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44337</IISExpressSSLPort>
+    <IISExpressSSLPort>44341</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -256,6 +256,8 @@
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Horde\RCE\1\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laminas\FD\1\chain.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laminas\FD\1\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laminas\FW\1\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laminas\FW\1\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\1\chain.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\1\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Laravel\RCE\2\chain.php" />
@@ -282,6 +284,10 @@
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\3\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\4\chain.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\5\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\5\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\6\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Monolog\RCE\6\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Phalcon\RCE\1\chain.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Phalcon\RCE\1\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\PHPCSFixer\FD\1\chain.php" />
@@ -326,6 +332,8 @@
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\3\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\4\chain.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\4\gadgets.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\5\chain.php" />
+    <Content Include="Resource\phpggc\phpggc-master\gadgetchains\Symfony\RCE\5\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\TCPDF\FD\1\chain.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\TCPDF\FD\1\gadgets.php" />
     <Content Include="Resource\phpggc\phpggc-master\gadgetchains\ThinkPHP\RCE\1\chain.php" />
@@ -517,20 +525,6 @@
     <Content Include="Resource\ysoserialnet\ysoserial.pdb" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Resource\php\dev\php8ts.lib" />
-    <Content Include="Resource\php\extras\ssl\openssl.cnf" />
-    <Content Include="Resource\php\phar.phar.bat" />
-    <Content Include="Resource\php\pharcommand.phar" />
-    <Content Include="Resource\php\php.ini-development" />
-    <Content Include="Resource\php\php.ini-production" />
-    <Content Include="Resource\php\php8embed.lib" />
-    <Content Include="Resource\php\README.md" />
-    <Content Include="Resource\phpggc\phpggc-master\Dockerfile" />
-    <Content Include="Resource\phpggc\phpggc-master\LICENSE" />
-    <Content Include="Resource\phpggc\phpggc-master\phpggc" />
-    <Content Include="Resource\phpggc\phpggc-master\README.md" />
-    <Content Include="Resource\ysoserialnet\TestConsoleApp_YSONET.exe.config" />
-    <Content Include="Resource\ysoserialnet\ysoserial.exe.config" />
     <Content Include="Resource\java\ASSEMBLY_EXCEPTION" />
     <Content Include="Resource\java\lib\accessibility.properties" />
     <Content Include="Resource\java\lib\calendars.properties" />
@@ -570,7 +564,18 @@
     <Content Include="Resource\java\LICENSE" />
     <Content Include="Resource\java\release" />
     <Content Include="Resource\java\THIRD_PARTY_README" />
-    <Content Include="Resource\python_support\exploit.yaml" />
+    <Content Include="Resource\phpggc\phpggc-master\Dockerfile" />
+    <Content Include="Resource\phpggc\phpggc-master\LICENSE" />
+    <Content Include="Resource\phpggc\phpggc-master\phpggc" />
+    <Content Include="Resource\phpggc\phpggc-master\README.md" />
+    <Content Include="Resource\php\dev\php8ts.lib" />
+    <Content Include="Resource\php\extras\ssl\openssl.cnf" />
+    <Content Include="Resource\php\phar.phar.bat" />
+    <Content Include="Resource\php\pharcommand.phar" />
+    <Content Include="Resource\php\php.ini-development" />
+    <Content Include="Resource\php\php.ini-production" />
+    <Content Include="Resource\php\php8embed.lib" />
+    <Content Include="Resource\php\README.md" />
     <Content Include="Resource\python\pyexpat.pyd" />
     <Content Include="Resource\python\python.cat" />
     <Content Include="Resource\python\python39.zip" />
@@ -594,6 +599,9 @@
     <Content Include="Resource\python\_ssl.pyd" />
     <Content Include="Resource\python\_uuid.pyd" />
     <Content Include="Resource\python\_zoneinfo.pyd" />
+    <Content Include="Resource\python_support\exploit.yaml" />
+    <Content Include="Resource\ysoserialnet\TestConsoleApp_YSONET.exe.config" />
+    <Content Include="Resource\ysoserialnet\ysoserial.exe.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -617,13 +625,12 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\YSoSerialJava\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\YSoSerialNET\Index.cshtml" />
     <Content Include="Views\PHPGGC\Index.cshtml" />
     <Content Include="Views\Python\Index.cshtml" />
     <Content Include="Views\Ruby\Index.cshtml" />
+    <Content Include="Views\YSoSerialJava\Index.cshtml" />
+    <Content Include="Views\YSoSerialNET\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -659,9 +666,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50281</DevelopmentServerPort>
+          <DevelopmentServerPort>49834</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44337/</IISUrl>
+          <IISUrl>https://localhost:44341/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -675,7 +682,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

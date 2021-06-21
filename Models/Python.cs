@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
-namespace DeserializationHelper.Models
+namespace SerializedPayloadGenerator.Models
 {
     public class Python
     {

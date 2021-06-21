@@ -30,7 +30,7 @@ This tool is not intended to be used to attack systems except where explicitly a
 
 Navigate to the link for which you want to generate the payload. For example, In order to generate YSoSerial Deserialization payload then use "YSoSerial" tab as shown below:
 
-![Usage](Usage/Usage.png)
+![Usage](Usage/Usage.jpg)
 
 ## References
 

@@ -1,4 +1,4 @@
-﻿@using DeserializationHelper.Models
+﻿@using SerializedPayloadGenerator.Models
 
 @model YSoSerialJava
 
@@ -37,12 +37,13 @@
             @Html.TextAreaFor(m => m.payload, new { @class = "form-control", @rows = 15 })
         </div>
     </div>
-    <br /><br />
+    <br />
+    <br />
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 @Html.LabelFor(m => m.ysoserialCommand, new { @class = "control-label" })
-                @Html.TextAreaFor(m => m.ysoserialCommand, new { @readonly = "readonly", @class = "form-control TextBoxAsLabel"})
+                @Html.TextAreaFor(m => m.ysoserialCommand, new { @readonly = "readonly", @class = "form-control TextBoxAsLabel" })
             </div>
         </div>
     </div>
