@@ -7,7 +7,6 @@
     <div class="jumbotron">
         <h1>YSoSerial.NET</h1>
         <p class="lead">A POC tool to generate payload to exploit unsafe .NET object deserialization.</p>
-        <a href="https://github.com/pwntester/ysoserial.net">More details..</a>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -124,6 +123,11 @@
                 @Html.LabelFor(m => m.ysoserialNetCommand, new { @class = "control-label", @id = "lblYSoSerialNetCommand" })
                 @Html.TextAreaFor(m => m.ysoserialNetCommand, new { @readonly = "readonly", @id = "txtYSoSerialNetCommand", @class = "form-control TextBoxAsLabel" })
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Reference: <a href="https://github.com/pwntester/ysoserial.net">https://github.com/pwntester/ysoserial.net</a></p>
         </div>
     </div>
 }

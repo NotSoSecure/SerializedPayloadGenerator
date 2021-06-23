@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SerializedPayloadGenerator")]
-[assembly: AssemblyCopyright("SerializedPayloadGenerator - © NotSoSecure 2021 Global Services Ltd, all rights reserved")]
+[assembly: AssemblyCopyright("SerializedPayloadGenerator - © NotSoSecure 2021 Global Services Ltd.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

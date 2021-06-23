@@ -7,7 +7,6 @@
     <div class="jumbotron">
         <h1>YSoSerial</h1>
         <p>A POC tool to generate payload to exploit unsafe Java object deserialization.</p>
-        <a href="https://github.com/frohoff/ysoserial">More details...</a>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -45,6 +44,11 @@
                 @Html.LabelFor(m => m.ysoserialCommand, new { @class = "control-label" })
                 @Html.TextAreaFor(m => m.ysoserialCommand, new { @readonly = "readonly", @class = "form-control TextBoxAsLabel" })
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Reference: <a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
         </div>
     </div>
 }

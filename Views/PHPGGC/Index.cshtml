@@ -7,7 +7,6 @@
     <div class="jumbotron">
         <h1>PHP Deserialization</h1>
         <p>A POC tool to generate payload for PHP deserialization</p>
-        <a href="https://github.com/ambionics/phpggc">More details..</a>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -86,6 +85,11 @@
                 @Html.LabelFor(m => m.phpggcCommand, new { @class = "control-label", @id = "lblPhpggcCommand" })
                 @Html.TextAreaFor(m => m.phpggcCommand, new { @readonly = "readonly", @id = "txtPhpggcCommand", @class = "form-control TextBoxAsLabel" })
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>Reference: <a href="https://github.com/ambionics/phpggc">https://github.com/ambionics/phpggc</a></p>
         </div>
     </div>
 }
