@@ -1,4 +1,4 @@
-powershell Invoke-WebRequest -OutFile ./Resource/php.zip -Uri https://windows.php.net/downloads/releases/php-8.0.7-Win32-vs16-x64.zip
+powershell Invoke-WebRequest -OutFile ./Resource/php.zip -Uri https://windows.php.net/downloads/releases/php-8.1.9-Win32-vs16-x64.zip
 powershell Expand-Archive -Path ./Resource/php.zip -DestinationPath ./Resource/php
 powershell Remove-Item ./Resource/php.zip
 
@@ -7,11 +7,11 @@ powershell Expand-Archive -Path ./Resource/ysoserialnet.zip -DestinationPath ./R
 powershell Remove-Item ./Resource/ysoserialnet.zip
 powershell Move-Item -Path ./Resource/ysoserialnet/Release/* -Destination ./Resource/ysoserialnet
 
-powershell Invoke-WebRequest -OutFile ./Resource/phpggc.zip -Uri https://github.com/ambionics/phpggc/archive/master.zip
+powershell Invoke-WebRequest -OutFile ./Resource/phpggc.zip -Uri https://github.com/ambionics/phpggc/archive/refs/heads/master.zip
 powershell Expand-Archive -Path ./Resource/phpggc.zip -DestinationPath ./Resource/phpggc
 powershell Remove-Item ./Resource/phpggc.zip
 
-powershell Invoke-WebRequest -OutFile ./Resource/ysoserial.jar -Uri https://jitpack.io/com/github/frohoff/ysoserial/master-SNAPSHOT/ysoserial-master-SNAPSHOT.jar
+powershell Invoke-WebRequest -OutFile ./Resource/ysoserial.jar -Uri https://github.com/frohoff/ysoserial/releases/latest/download/ysoserial-all.jar
 
 powershell Invoke-WebRequest -OutFile ./Resource/python.zip -Uri https://www.python.org/ftp/python/3.9.5/python-3.9.5-embed-amd64.zip
 powershell Expand-Archive -Path ./Resource/python.zip -DestinationPath ./Resource/python

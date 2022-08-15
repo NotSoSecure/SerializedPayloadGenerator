@@ -22,8 +22,10 @@ namespace SerializedPayloadGenerator.Models
     public enum JavaGadget
     {
         [Description("Blanched Almond Color")]
+        AspectJWeaver,
         BeanShell1,
         C3P0,
+        Click1,
         Clojure,
         CommonsBeanutils1,
         CommonsCollections1,
@@ -32,6 +34,7 @@ namespace SerializedPayloadGenerator.Models
         CommonsCollections4,
         CommonsCollections5,
         CommonsCollections6,
+        CommonsCollections7,
         FileUpload1,
         Groovy1,
         Hibernate1,
@@ -44,12 +47,14 @@ namespace SerializedPayloadGenerator.Models
         Jdk7u21,
         Jython1,
         MozillaRhino1,
+        MozillaRhino2,
         Myfaces1,
         Myfaces2,
         ROME,
         Spring1,
         Spring2,
         URLDNS,
+        Vaadin1,
         Wicket1
     }
 
