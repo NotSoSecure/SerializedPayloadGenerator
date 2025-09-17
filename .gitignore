@@ -39,3 +39,8 @@ Resource/java/*
 Resource/python/*
 Resource/ysoserialnet/*
 Resource/ysoserial.jar
+obj/*
+bin/*
+packages/*
+.vs/*
+Properties/PublishProfiles/*

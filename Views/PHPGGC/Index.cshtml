@@ -104,29 +104,64 @@
         $("#selVersion").empty();
         $("#selType").empty();
         $("#selVector").empty();
-        if (data == "CakePHP_RCE1") {
+        if (data == "Bitrix_RCE1") {
+            $("#selVersion").append(new Option("17.x.x <= 22.0.300", "17.x.x <= 22.0.300"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "CakePHP_RCE1") {
             $("#selVersion").append(new Option("? <= 3.9.6", "? <= 3.9.6"));
-            $("#selType").append(new Option("RCE (Command)", "RCE (Command)"));
+            $("#selType").append(new Option("RCE: Command", "RCE: Command"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "CakePHP_RCE2") {
             $("#selVersion").append(new Option("? <= 4.2.3", "? <= 4.2.3"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
+        else if (data == "CodeIgniter4_FD1") {
+            $("#selVersion").append(new Option("<= 4.3.6", "<= 4.3.6"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "CodeIgniter4_FD2") {
+            $("#selVersion").append(new Option("<= 4.3.7", "<= 4.3.7"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "CodeIgniter4_FR1") {
+            $("#selVersion").append(new Option("4.0.0 <= 4.3.6", "4.0.0 <= 4.3.6"));
+            $("#selType").append(new Option("File read", "File read"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
         else if (data == "CodeIgniter4_RCE1") {
-            $("#selVersion").append(new Option("4.0.0-beta.1 <= 4.0.0-rc.4", "4.0.0-beta.1 <= 4.0.0-rc.4"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selVersion").append(new Option("4.0.2", "4.0.2"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "CodeIgniter4_RCE2") {
-            $("#selVersion").append(new Option("4.0.0-rc.4 <= 4.0.4+", "4.0.0-rc.4 <= 4.0.4+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selVersion").append(new Option("4.0.0-rc.4 <= 4.3.6", "4.0.0-rc.4 <= 4.3.6"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "CodeIgniter4_RCE3") {
+            $("#selVersion").append(new Option("4.0.4 <= 4.4.3", "4.0.4 <= 4.4.3"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "CodeIgniter4_RCE4") {
+            $("#selVersion").append(new Option("4.0.0-beta.1 <= 4.0.0-rc.4", "4.0.0-beta.1 <= 4.0.0-rc.4"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "CodeIgniter4_RCE5") {
             $("#selVersion").append(new Option("-4.1.3+", "-4.1.3+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "CodeIgniter4_RCE6") {
+            $("#selVersion").append(new Option("-4.1.3 <= 4.2.10+", "-4.1.3 <= 4.2.10+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Doctrine_FW1") {
@@ -139,6 +174,16 @@
             $("#selType").append(new Option("File write", "File write"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
+        else if (data == "Doctrine_RCE1") {
+            $("#selVersion").append(new Option("1.5.1 <= 2.7.2", "1.5.1 <= 2.7.2"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Doctrine_RCE2") {
+            $("#selVersion").append(new Option("1.11.0 <= 2.3.2", "1.11.0 <= 2.3.2"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
         else if (data == "Dompdf_FD1") {
             $("#selVersion").append(new Option("1.1.1 <= ?", "1.1.1 <= ?"));
             $("#selType").append(new Option("File delete", "File delete"));
@@ -149,18 +194,68 @@
             $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
+        else if (data == "Drupal_AT1") {
+            $("#selVersion").append(new Option(">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9 || >= 11.0.0 < 11.0.8", ">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9 || >= 11.0.0 < 11.0.8"));
+            $("#selType").append(new Option("Account takeover", "Account takeover"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Drupal_FD1") {
+            $("#selVersion").append(new Option(">= 10.3.0 < 10.3.9 || >= 11.0.0 < 11.0.8", ">= 10.3.0 < 10.3.9 || >= 11.0.0 < 11.0.8"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Drupal_PsySH_INFO1") {
+            $("#selVersion").append(new Option(">= v0.9.0 < v0.12.6", ">= v0.9.0 < v0.12.6"));
+            $("#selType").append(new Option("phpinfo()", "phpinfo()"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Drupal_SQLI1") {
+            $("#selVersion").append(new Option(">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9", ">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9"));
+            $("#selType").append(new Option("MySQL Authenticated SQL injection", "MySQL Authenticated SQL injection"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Drupal_SSRF1") {
+            $("#selVersion").append(new Option(">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9", ">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9"));
+            $("#selType").append(new Option("SSRF", "SSRF"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Drupal_XXE1") {
+            $("#selVersion").append(new Option(">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9", ">= 8.0.0 < 10.2.11 || >= 10.3.0 < 10.3.9"));
+            $("#selType").append(new Option("XML External Entity", "XML External Entity"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
         else if (data == "Drupal7_FD1") {
-            $("#selVersion").append(new Option("7.0 < ?", "7.0 < ?"));
+            $("#selVersion").append(new Option("7.0 <= 7.78", "7.0 <= 7.78"));
             $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Drupal7_RCE1") {
-            $("#selVersion").append(new Option("7.0.8 < ?", "7.0.8 < ?"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selVersion").append(new Option("7.0.8 <= 7.98", "7.0.8 <= 7.98"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Drupal7_SQLI1") {
+            $("#selVersion").append(new Option("<= 7.101", "<= 7.101"));
+            $("#selType").append(new Option("SQL injection", "SQL injection"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Drupal7_SSRF1") {
+            $("#selVersion").append(new Option("<= 7.101", "<= 7.101"));
+            $("#selType").append(new Option("SSRF", "SSRF"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Drupal9_RCE1") {
+            $("#selVersion").append(new Option("-8.9.6 <= 9.5.10+", "-8.9.6 <= 9.5.10+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Grav_FD1") {
+            $("#selVersion").append(new Option("1.4.0 <= 1.7.48+", "1.4.0 <= 1.7.48+"));
+            $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Guzzle_FW1") {
-            $("#selVersion").append(new Option("6.0.0 <= 6.3.3+", "6.0.0 <= 6.3.3+"));
+            $("#selVersion").append(new Option("4.0.0-rc.2 <= 7.5.0+", "4.0.0-rc.2 <= 7.5.0+"));
             $("#selType").append(new Option("File write", "File write"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
@@ -171,12 +266,17 @@
         }
         else if (data == "Guzzle_RCE1") {
             $("#selVersion").append(new Option("6.0.0 <= 6.3.2", "6.0.0 <= 6.3.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Horde_RCE1") {
-            $("#selVersion").append(new Option("<= 5.2.22 ", "<= 5.2.22 "));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selVersion").append(new Option("<= 5.2.22", "<= 5.2.22"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Joomla_FW1") {
+            $("#selVersion").append(new Option("3.9.0 <= 5.2.1", "3.9.0 <= 5.2.1"));
+            $("#selType").append(new Option("File write", "File write"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Kohana_FR1") {
@@ -194,54 +294,119 @@
             $("#selType").append(new Option("File write", "File write"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
-        else if (data == "Laravel_RCE1") {
-            $("#selVersion").append(new Option("5.4.27", "5.4.27"));
-            $("#selType").append(new Option("rce", "rce"));
+        else if (data == "Laravel_FD1") {
+            $("#selVersion").append(new Option("*", "*"));
+            $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
-        else if (data == "Laravel_RCE10") {
-            $("#selVersion").append(new Option("5.6.0 <= 9.1.8+", "5.6.0 <= 9.1.8+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
-            $("#selVector").append(new Option("__toString", "__toString"));
+        else if (data == "Laravel_RCE1") {
+            $("#selVersion").append(new Option("5.4.27", "5.4.27"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE2") {
             $("#selVersion").append(new Option("5.4.0 <= 8.6.9+", "5.4.0 <= 8.6.9+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE3") {
             $("#selVersion").append(new Option("5.5.0 <= 5.8.35", "5.5.0 <= 5.8.35"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE4") {
             $("#selVersion").append(new Option("5.4.0 <= 8.6.9+", "5.4.0 <= 8.6.9+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE5") {
             $("#selVersion").append(new Option("5.8.30", "5.8.30"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE6") {
             $("#selVersion").append(new Option("5.5.* <= 5.8.35", "5.5.* <= 5.8.35"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE7") {
             $("#selVersion").append(new Option("? <= 8.16.1", "? <= 8.16.1"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE8") {
             $("#selVersion").append(new Option("7.0.0 <= 8.6.9+", "7.0.0 <= 8.6.9+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Laravel_RCE9") {
-            $("#selVersion").append(new Option("5.4.0 <= 9.1.8+*", "5.4.0 <= 9.1.8+*"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selVersion").append(new Option("5.4.0 <= 9.1.8+", "5.4.0 <= 9.1.8+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE10") {
+            $("#selVersion").append(new Option("5.6.0 <= 9.1.8+", "5.6.0 <= 9.1.8+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "Laravel_RCE11") {
+            $("#selVersion").append(new Option("5.4.0 <= 9.1.8+", "5.4.0 <= 9.1.8+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE12") {
+            $("#selVersion").append(new Option("5.8.35, 7.0.0, 9.3.10", "5.8.35, 7.0.0, 9.3.10"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE13") {
+            $("#selVersion").append(new Option("5.3.0 <= 9.5.1+", "5.3.0 <= 9.5.1+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE14") {
+            $("#selVersion").append(new Option("5.3.0 <= 9.5.1+", "5.3.0 <= 9.5.1+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE15") {
+            $("#selVersion").append(new Option("5.5.0 <= v9.5.1+", "5.5.0 <= v9.5.1+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE16") {
+            $("#selVersion").append(new Option("5.6.0 <= v9.5.1+", "5.6.0 <= v9.5.1+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE17") {
+            $("#selVersion").append(new Option("10.31.0", "10.31.0"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE18") {
+            $("#selVersion").append(new Option("10.31.0", "10.31.0"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE19") {
+            $("#selVersion").append(new Option("10.34", "10.34"));
+            $("#selType").append(new Option("RCE: Command", "RCE: Command"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE20") {
+            $("#selVersion").append(new Option("5.6 <= 10.x", "5.6 <= 10.x"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE21") {
+            $("#selVersion").append(new Option("5.1.*", "5.1.*"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Laravel_RCE22") {
+            $("#selVersion").append(new Option("v10.0.0 <= v11.34.2+", "v10.0.0 <= v11.34.2+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Magento_FW1") {
@@ -259,6 +424,11 @@
             $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
+        else if (data == "Magento2_FD2") {
+            $("#selVersion").append(new Option("*", "*"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
         else if (data == "Monolog_FW1") {
             $("#selVersion").append(new Option("3.0.0 <= 3.1.0+", "3.0.0 <= 3.1.0+"));
             $("#selType").append(new Option("File write", "File write"));
@@ -266,53 +436,83 @@
         }
         else if (data == "Monolog_RCE1") {
             $("#selVersion").append(new Option("1.4.1 <= 1.6.0 1.17.2 <= 2.7.0+", "1.4.1 <= 1.6.0 1.17.2 <= 2.7.0+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE2") {
-            $("#selVersion").append(new Option("1.4.1 <= 2.7.0+", "1.4.1 <= 2.7.0+));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selVersion").append(new Option("1.4.1 <= 2.7.0+", "1.4.1 <= 2.7.0+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE3") {
             $("#selVersion").append(new Option("1.1.0 <= 1.10.0", "1.1.0 <= 1.10.0"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE4") {
             $("#selVersion").append(new Option("? <= 2.4.4+", "? <= 2.4.4+"));
-            $("#selType").append(new Option("RCE (Command)", "RCE (Command)"));
+            $("#selType").append(new Option("RCE: Command", "RCE: Command"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE5") {
             $("#selVersion").append(new Option("1.25 <= 2.7.0+", "1.25 <= 2.7.0+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE6") {
             $("#selVersion").append(new Option("1.10.0 <= 2.7.0+", "1.10.0 <= 2.7.0+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE7") {
             $("#selVersion").append(new Option("1.10.0 <= 2.7.0+", "1.10.0 <= 2.7.0+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE8") {
-            $("#selVersion").append(new Option("3.0.0 <= 3.1.0+", "3.0.0 <= 3.1.0 +"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selVersion").append(new Option("3.0.0 <= 3.1.0+", "3.0.0 <= 3.1.0+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Monolog_RCE9") {
             $("#selVersion").append(new Option("3.0.0 <= 3.1.0+", "3.0.0 <= 3.1.0+"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "OpenCart_FW1") {
+            $("#selVersion").append(new Option("4.0.0.0 <= 4.0.2.3+", "4.0.0.0 <= 4.0.2.3+"));
+            $("#selType").append(new Option("File write", "File write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "OpenCart_FW2") {
+            $("#selVersion").append(new Option("3.0.3.5 <= 3.0.4.0+", "3.0.3.5 <= 3.0.4.0+"));
+            $("#selType").append(new Option("File write", "File write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "OpenCart_FW3") {
+            $("#selVersion").append(new Option("3.0.0.0 <= 3.0.3.4", "3.0.0.0 <= 3.0.3.4"));
+            $("#selType").append(new Option("File write", "File write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "OpenCart_RCE1") {
+            $("#selVersion").append(new Option("4.0.0.0 < 4.1.0.0", "4.0.0.0 < 4.1.0.0"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "OpenCart_RCE2") {
+            $("#selVersion").append(new Option("4.1.0.0 <= 4.1.0.3+", "4.1.0.0 <= 4.1.0.3+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Phalcon_RCE1") {
             $("#selVersion").append(new Option("<= 1.2.2", "<= 1.2.2"));
-            $("#selType").append(new Option("RCE", "RCE"));
+            $("#selType").append(new Option("RCE: eval(php://input)", "RCE: eval(php://input)"));
             $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Phing_FD1") {
+            $("#selVersion").append(new Option("2.6.0 <= 3.0.0a3", "2.6.0 <= 3.0.0a3"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "PHPCSFixer_FD1") {
             $("#selVersion").append(new Option("<= 2.17.3", "<= 2.17.3"));
@@ -346,17 +546,37 @@
         }
         else if (data == "PHPSecLib_RCE1") {
             $("#selVersion").append(new Option("2.0.0 <= 2.0.34", "2.0.0 <= 2.0.34"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "phpThumb_FD1") {
+            $("#selVersion").append(new Option("<= v1.7.22", "<= v1.7.22"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "PHPWord_FD1") {
+            $("#selVersion").append(new Option("*", "*"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Plates_RCE1") {
+            $("#selVersion").append(new Option("3.5.0 >= 3.6.0", "3.5.0 >= 3.6.0"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "Pydio_Guzzle_RCE1") {
             $("#selVersion").append(new Option("< 8.2.2", "< 8.2.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "Silverstripe_FD1") {
+            $("#selVersion").append(new Option("3.5.5 <= 5.3.0+", "3.5.5 <= 5.3.0+"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Slim_RCE1") {
             $("#selVersion").append(new Option("3.8.1", "3.8.1"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "Smarty_FD1") {
@@ -369,10 +589,35 @@
             $("#selType").append(new Option("SSRF", "SSRF"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
+        else if (data == "Snappy_FD1") {
+            $("#selVersion").append(new Option("*", "*"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Spiral_RCE1") {
+            $("#selVersion").append(new Option("2.7.0 <= 2.8.13", "2.7.0 <= 2.8.13"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Spiral_RCE2") {
+            $("#selVersion").append(new Option("-2.8+", "-2.8+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
         else if (data == "SwiftMailer_FD1") {
             $("#selVersion").append(new Option("-5.4.12+, -6.2.1+", "-5.4.12+, -6.2.1+"));
             $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "SwiftMailer_FD2") {
+            $("#selVersion").append(new Option("5.4.6 <= 5.x-dev", "5.4.6 <= 5.x-dev"));
+            $("#selType").append(new Option("File delete", "File delete"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "SwiftMailer_FR1") {
+            $("#selVersion").append(new Option("6.0.0 <= 6.3.0", "6.0.0 <= 6.3.0"));
+            $("#selType").append(new Option("File read", "File read"));
+            $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "SwiftMailer_FW1") {
             $("#selVersion").append(new Option("5.1.0 <= 5.4.8", "5.1.0 <= 5.4.8"));
@@ -385,13 +630,18 @@
             $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "SwiftMailer_FW3") {
-            $("#selVersion").append(new Option("5.1.0", "5.1.0"));
+            $("#selVersion").append(new Option("5.0.1", "5.0.1"));
             $("#selType").append(new Option("File write", "File write"));
             $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "SwiftMailer_FW4") {
             $("#selVersion").append(new Option("4.0.0 <= ?", "4.0.0 <= ?"));
             $("#selType").append(new Option("File write", "File write"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_FD1") {
+            $("#selVersion").append(new Option("v3.2.7 <= v3.4.25 v4.0.0 <= v4.1.11 v4.2.0 <= v4.2.6", "v3.2.7 <= v3.4.25 v4.0.0 <= v4.1.11 v4.2.0 <= v4.2.6"));
+            $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Symfony_FW1") {
@@ -405,29 +655,84 @@
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Symfony_RCE1") {
-            $("#selVersion").append(new Option("3.3", "3.3"));
-            $("#selType").append(new Option("RCE (Command)", "RCE (Command)"));
+            $("#selVersion").append(new Option("v3.1.0 <= v3.4.34", "v3.1.0 <= v3.4.34"));
+            $("#selType").append(new Option("RCE: Command", "RCE: Command"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Symfony_RCE2") {
             $("#selVersion").append(new Option("2.3.42 < 2.6", "2.3.42 < 2.6"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Symfony_RCE3") {
             $("#selVersion").append(new Option("2.6 <= 2.8.32", "2.6 <= 2.8.32"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Symfony_RCE4") {
             $("#selVersion").append(new Option("3.4.0-34, 4.2.0-11, 4.3.0-7", "3.4.0-34, 4.2.0-11, 4.3.0-7"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Symfony_RCE5") {
             $("#selVersion").append(new Option("5.2.*", "5.2.*"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE6") {
+            $("#selVersion").append(new Option("v3.4.0-BETA4 <= v3.4.49 & v4.0.0-BETA4 <= v4.1.13", "v3.4.0-BETA4 <= v3.4.49 & v4.0.0-BETA4 <= v4.1.13"));
+            $("#selType").append(new Option("RCE: Command", "RCE: Command"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE7") {
+            $("#selVersion").append(new Option("v3.2.0 <= v3.4.34 v4.0.0 <= v4.2.11 v4.3.0 <= v4.3.7", "v3.2.0 <= v3.4.34 v4.0.0 <= v4.2.11 v4.3.0 <= v4.3.7"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE8") {
+            $("#selVersion").append(new Option("v3.4.0 <= v4.4.18 v5.0.0 <= v5.2.1", "v3.4.0 <= v4.4.18 v5.0.0 <= v5.2.1"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE9") {
+            $("#selVersion").append(new Option("2.6.0 <= 4.4.18", "2.6.0 <= 4.4.18"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE10") {
+            $("#selVersion").append(new Option("2.0.4 <= 5.4.24 (all)", "2.0.4 <= 5.4.24 (all)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__toString", "__toString"));
+        }
+        else if (data == "Symfony_RCE11") {
+            $("#selVersion").append(new Option("2.0.4 <= 5.4.24 (all)", "2.0.4 <= 5.4.24 (all)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE12") {
+            $("#selVersion").append(new Option("1.3.0 <= 1.5.13~17", "1.3.0 <= 1.5.13~17"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "Symfony_RCE13") {
+            $("#selVersion").append(new Option("1.2.0 <= 1.2.12", "1.2.0 <= 1.2.12"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("Serializable", "Serializable"));
+        }
+        else if (data == "Symfony_RCE14") {
+            $("#selVersion").append(new Option("1.2.0 <= 1.2.12", "1.2.0 <= 1.2.12"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Symfony_RCE15") {
+            $("#selVersion").append(new Option("1.0.0 <= 1.1.9", "1.0.0 <= 1.1.9"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Symfony_RCE16") {
+            $("#selVersion").append(new Option("1.1.0 <= 1.5.18", "1.1.0 <= 1.5.18"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("Serializable", "Serializable"));
         }
         else if (data == "TCPDF_FD1") {
             $("#selVersion").append(new Option("<= 6.3.5", "<= 6.3.5"));
@@ -446,12 +751,22 @@
         }
         else if (data == "ThinkPHP_RCE1") {
             $("#selVersion").append(new Option("5.1.x-5.2.x", "5.1.x-5.2.x"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "ThinkPHP_RCE2") {
             $("#selVersion").append(new Option("5.0.24", "5.0.24"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "ThinkPHP_RCE3") {
+            $("#selVersion").append(new Option("-6.0.1+", "-6.0.1+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "ThinkPHP_RCE4") {
+            $("#selVersion").append(new Option("-6.0.1+", "-6.0.1+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Typo3_FD1") {
@@ -459,94 +774,109 @@
             $("#selType").append(new Option("File delete", "File delete"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
+        else if (data == "vBulletin_RCE1") {
+            $("#selVersion").append(new Option("-5.6.9+", "-5.6.9+"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
         else if (data == "WordPress_Dompdf_RCE1") {
             $("#selVersion").append(new Option("0.8.5+ & WP < 5.5.2", "0.8.5+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_Dompdf_RCE2") {
             $("#selVersion").append(new Option("0.7.0 <= 0.8.4 & WP < 5.5.2", "0.7.0 <= 0.8.4 & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_Guzzle_RCE1") {
             $("#selVersion").append(new Option("4.0.0 <= 6.4.1+ & WP < 5.5.2", "4.0.0 <= 6.4.1+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "WordPress_Guzzle_RCE2") {
             $("#selVersion").append(new Option("4.0.0 <= 6.4.1+ & WP < 5.5.2", "4.0.0 <= 6.4.1+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_P_EmailSubscribers_RCE1") {
             $("#selVersion").append(new Option("4.0 <= 4.4.7+ & WP < 5.5.2", "4.0 <= 4.4.7+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_P_EverestForms_RCE1") {
             $("#selVersion").append(new Option("1.0 <= 1.6.7+ & WP < 5.5.2", "1.0 <= 1.6.7+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_P_WooCommerce_RCE1") {
             $("#selVersion").append(new Option("3.4.0 <= 4.1.0+ & WP < 5.5.2", "3.4.0 <= 4.1.0+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_P_WooCommerce_RCE2") {
             $("#selVersion").append(new Option("<= 3.4.0 & WP < 5.5.2", "<= 3.4.0 & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_P_YetAnotherStarsRating_RCE1") {
             $("#selVersion").append(new Option("? <= 1.8.6 & WP < 5.5.2", "? <= 1.8.6 & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "WordPress_P_YoastSEO_FW1") {
+            $("#selVersion").append(new Option("19.0 <= 24.9+", "19.0 <= 24.9+"));
+            $("#selType").append(new Option("File write", "File write"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_PHPExcel_RCE1") {
             $("#selVersion").append(new Option("1.8.2+ & WP < 5.5.2", "1.8.2+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "WordPress_PHPExcel_RCE2") {
             $("#selVersion").append(new Option("<= 1.8.1 & WP < 5.5.2", "<= 1.8.1 & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "WordPress_PHPExcel_RCE3") {
             $("#selVersion").append(new Option("1.8.2+ & WP < 5.5.2", "1.8.2+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "WordPress_PHPExcel_RCE4") {
             $("#selVersion").append(new Option("<= 1.8.1 & WP < 5.5.2", "<= 1.8.1 & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
-        else if (data == "WordPress_PHPExcel_RCE5") {
-            $("#selVersion").append(new Option("1.8.2+ & WP < 5.5.2", "1.8.2+ & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
-            $("#selVector").append(new Option("__destruct", "__destruct"));
+        else if (data == "WordPress_RCE1") {
+            $("#selVersion").append(new Option("<= 6.3.1", "<= 6.3.1"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__toString", "__toString"));
         }
-        else if (data == "WordPress_PHPExcel_RCE6") {
-            $("#selVersion").append(new Option("<= 1.8.1 & WP < 5.5.2", "<= 1.8.1 & WP < 5.5.2"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+        else if (data == "WordPress_RCE2") {
+            $("#selVersion").append(new Option("6.4.0 <= 6.4.1", "6.4.0 <= 6.4.1"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Yii_RCE1") {
             $("#selVersion").append(new Option("1.1.20", "1.1.20"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__wakeup", "__wakeup"));
+        }
+        else if (data == "Yii_RCE2") {
+            $("#selVersion").append(new Option("1.1.20", "1.1.20"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Yii2_RCE1") {
             $("#selVersion").append(new Option("<2.0.38", "<2.0.38"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "Yii2_RCE2") {
             $("#selVersion").append(new Option("<2.0.38", "<2.0.38"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "ZendFramework_FD1") {
@@ -556,22 +886,27 @@
         }
         else if (data == "ZendFramework_RCE1") {
             $("#selVersion").append(new Option("? <= 1.12.20", "? <= 1.12.20"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "ZendFramework_RCE2") {
             $("#selVersion").append(new Option("1.11.12 <= 1.12.20", "1.11.12 <= 1.12.20"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__toString", "__toString"));
         }
         else if (data == "ZendFramework_RCE3") {
             $("#selVersion").append(new Option("2.0.1 <= ?", "2.0.1 <= ?"));
-            $("#selType").append(new Option("RCE (Function call)", "RCE (Function call)"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
         else if (data == "ZendFramework_RCE4") {
             $("#selVersion").append(new Option("? <= 1.12.20", "? <= 1.12.20"));
-            $("#selType").append(new Option("RCE (PHP code)", "RCE (PHP code)"));
+            $("#selType").append(new Option("RCE: PHP Code", "RCE: PHP Code"));
+            $("#selVector").append(new Option("__destruct", "__destruct"));
+        }
+        else if (data == "ZendFramework_RCE5") {
+            $("#selVersion").append(new Option("2.0.0rc2 <= 2.5.3", "2.0.0rc2 <= 2.5.3"));
+            $("#selType").append(new Option("RCE: Function Call", "RCE: Function Call"));
             $("#selVector").append(new Option("__destruct", "__destruct"));
         }
     });

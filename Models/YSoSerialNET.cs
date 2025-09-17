@@ -62,9 +62,12 @@ namespace SerializedPayloadGenerator.Models
         ApplicationTrust,
         Clipboard,
         DotNetNuke,
+        GetterCallGadgets,
+        NetNonRceGadgets,
         Resx,
         SessionSecurityTokenHandler,
         SharePoint,
+        ThirdPartyGadgets,
         TransactionManagerReenlist,
         ViewState
     }
@@ -75,20 +78,32 @@ namespace SerializedPayloadGenerator.Models
         ActivitySurrogateDisableTypeCheck,
         ActivitySurrogateSelectorFromFile,
         AxHostState,
+        BaseActivationFactory,
         ClaimsIdentity,
+        ClaimsPrincipal,
         DataSet,
+        DataSetOldBehaviour,
+        DataSetOldBehaviourFromFile,
+        DataSetTypeSpoof,
+        GenericPrincipal,
+        GetterCompilerResults,
+        GetterSecurityException,
+        GetterSettingsPropertyValue,
         ObjectDataProvider,
+        ObjRef,
         PSObject,
         RolePrincipal,
-        ResourceSet,
         SessionSecurityToken,
         SessionViewStateHistoryItem,
         TextFormattingRunProperties,
+        ToolboxItemContainer,
         TypeConfuseDelegate,
         TypeConfuseDelegateMono,
         WindowsClaimsIdentity,
         WindowsIdentity,
-        WindowsPrincipal
+        WindowsPrincipal,
+        XamlAssemblyLoadFromFile,
+        XamlImageInfo
     }
 
     public enum Formatter
@@ -107,7 +122,10 @@ namespace SerializedPayloadGenerator.Models
         SharpSerializerXml,
         Xaml,
         XmlSerializer,
-        YamlDotNet
+        YamlDotNet,
+        MessagePackTypeless,
+        MessagePackTypelessLz4,
+        ObjectStateFormatter
     }
 
     public enum NetOutput
